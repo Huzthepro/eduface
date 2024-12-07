@@ -27,4 +27,11 @@ export class JobApplicationRepositoryImpl implements JobApplicationRepository {
     }
     return null;
   }
+
+  async findAll(): Promise<any[]> {
+    const query = `SELECT * FROM job_applications`;
+    const [rows] = await this.database.query(query);
+
+    return rows as any[];
+  }
 }
