@@ -7,6 +7,7 @@ import { JobApplicationRepositoryImpl } from "./JobApplicationRepositoryImpl";
 import { FetchApplicationsUseCase } from "../../core/use-cases/FetchApplicationsUseCase";
 import { SaveApplicationUseCase } from "../../core/use-cases/SaveApplicationUseCase";
 import { GetApplicationUseCase } from "../../core/use-cases/GetApplicationUseCase";
+import { GetSavedApplicationsUseCase } from "../../core/use-cases/GetSavedApplicationsUseCase";
 
 let jobApplicationController: JobApplicationController;
 
@@ -28,12 +29,16 @@ let jobApplicationController: JobApplicationController;
   const getApplicationUseCase = new GetApplicationUseCase(
     jobApplicationRepository
   );
+  const getSavedApplicationsUseCase = new GetSavedApplicationsUseCase(
+    jobApplicationRepository
+  );
 
   // Controller
   jobApplicationController = new JobApplicationController(
     fetchApplicationsUseCase,
     saveApplicationUseCase,
-    getApplicationUseCase
+    getApplicationUseCase,
+    getSavedApplicationsUseCase
   );
 })();
 

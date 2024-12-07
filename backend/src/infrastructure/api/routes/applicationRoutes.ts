@@ -12,4 +12,8 @@ router.post("/save-application", validateJobApplication, (req, res) =>
   jobApplicationController.saveApplication(req, res)
 );
 
+router.get("/my-applications", (req, res) =>
+  jobApplicationController.getSavedApplications(req, res)
+);
+
 export default router;
