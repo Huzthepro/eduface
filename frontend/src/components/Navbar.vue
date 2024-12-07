@@ -18,7 +18,7 @@ export default {
 .navbar {
   margin: 20px auto;
   display: flex;
-  width: 100%;
+  width: 90%;
   max-width: 1080px;
   justify-content: space-between;
   align-items: center;

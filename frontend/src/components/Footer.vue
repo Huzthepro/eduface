@@ -51,6 +51,7 @@ export default {
   font-weight: 800;
 }
 .upper-footer {
+  width: 80%;
   max-width: 1080px;
   margin: auto;
   display: flex;
@@ -85,6 +86,7 @@ export default {
   padding: 35px 0px;
 }
 .bottom-footer-container {
+  width: 80%;
   margin: auto;
   max-width: 1080px;
   display: flex;
