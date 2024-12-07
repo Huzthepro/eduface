@@ -1,13 +1,37 @@
-<script setup lang="ts"></script>
+<script lang="ts">
+import AppNavbar from './components/Navbar.vue'
+import AppFooter from './components/Footer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    AppNavbar,
+    AppFooter,
+  },
+}
+</script>
 
 <template>
-  <header>
-    <img alt="Eduface logo" class="logo" src="./assets/logo.png" width="102" height="27" />
-  </header>
-
-  <main>
-    <h1>Hi</h1>
-  </main>
+  <div id="app">
+    <AppNavbar />
+    <router-view />
+    <AppFooter />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Make the app container take up the full screen */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Allow the main content to fill the space between navbar and footer */
+router-view {
+  flex: 1;
+  overflow-y: auto;
+}
+</style>
