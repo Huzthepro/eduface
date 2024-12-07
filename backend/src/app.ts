@@ -2,6 +2,10 @@ import express from "express";
 import cors from "cors";
 import { connectDatabase } from "./infrastructure/database";
 import { configureRoutes } from "./infrastructure/api";
+import {
+  errorHandler,
+  notFoundHandler,
+} from "./infrastructure/api/middlewares/error-handler";
 const app = express();
 
 // const corsOptions = {
@@ -26,5 +30,8 @@ app.use(express.json());
 
 // Routes
 configureRoutes(app);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 export default app;
