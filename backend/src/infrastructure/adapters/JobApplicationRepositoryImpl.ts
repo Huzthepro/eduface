@@ -1,3 +1,4 @@
+import { JobApplication } from "../../core/entities/jobApplication";
 import { JobApplicationRepository } from "../../core/ports/JobApplicationRepository";
 import { Pool } from "mysql2/promise";
 
@@ -13,5 +14,17 @@ export class JobApplicationRepositoryImpl implements JobApplicationRepository {
       application.location,
     ];
     await this.database.execute(query, params);
+  }
+
+  async findById(id: string): Promise<any> {
+    const [rows] = await this.database.execute(
+      "SELECT * FROM job_applications WHERE id = ?",
+      [id]
+    );
+
+    if (Array.isArray(rows) && rows.length > 0) {
+      return rows[0] as JobApplication;
+    }
+    return null;
   }
 }
