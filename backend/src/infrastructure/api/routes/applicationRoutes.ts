@@ -1,5 +1,6 @@
 import express from "express";
 import { jobApplicationController } from "../../adapters/adapters.di";
+import { validateJobApplication } from "../middlewares/validate-request";
 
 const router = express.Router();
 
@@ -7,8 +8,8 @@ router.get("/fetch-applications", (req, res) =>
   jobApplicationController.fetchApplications(req, res)
 );
 
-router.post("/save-application", (req, res) =>
-  console.log("Saving application...")
+router.post("/save-application", validateJobApplication, (req, res) =>
+  jobApplicationController.saveApplication(req, res)
 );
 
 export default router;
