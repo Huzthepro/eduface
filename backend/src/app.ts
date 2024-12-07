@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-
+import { connectDatabase } from "./infrastructure/database";
+import { configureRoutes } from "./infrastructure/api";
 const app = express();
 
 // const corsOptions = {
@@ -19,7 +20,7 @@ app.use(express.json());
     console.log("Database connected successfully!");
   } catch (error) {
     console.error("Database connection failed:", error);
-    process.exit(1); // Exit if the database fails to connect
+    process.exit(1);
   }
 })();
 
