@@ -7,15 +7,21 @@
         <p>+31 6 3773 5018</p>
       </div>
       <div class="upper-footer-center">
-        <p>Leer het Eduface team kennen</p>
-        <p>
+        <h2>Leer het Eduface team kennen</h2>
+        <h2>
           Volg ons op LinkedIn
-          <img src="/public/favicon.ico" alt="LinkedIn" style="width: 1rem; height: 1rem" />
-        </p>
+          <img
+            src="/src/assets/linkedin.svg"
+            alt="LinkedIn"
+            style="width: 1.2rem; height: 1.2rem"
+          />
+        </h2>
       </div>
       <div class="upper-footer-right">
-        <p>Langegracht 70<br />2312 NV Leiden</p>
-        <p>Toernooiveld 100<br />6525 EC Nijmegen</p>
+        <p>Langegracht 70</p>
+        <p>2312 NV Leiden</p>
+        <p>Toernooiveld 100</p>
+        <p>6525 EC Nijmegen</p>
       </div>
     </div>
     <div class="bottom-footer">
@@ -42,6 +48,7 @@ export default {
 .footer {
   margin: auto;
   width: 100%;
+  font-weight: 800;
 }
 .upper-footer {
   max-width: 1080px;
@@ -49,7 +56,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 2rem 1rem;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
 }
 .upper-footer-left {
   display: flex;
@@ -62,17 +69,20 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  font-weight: 700;
+  font-size: 1rem;
 }
 .upper-footer-right {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 .bottom-footer {
   border-radius: 36px 36px 0 0;
   background-color: #002333;
   width: 100%;
+  padding: 35px 0px;
 }
 .bottom-footer-container {
   margin: auto;
@@ -80,8 +90,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: white;
 }
 .right {

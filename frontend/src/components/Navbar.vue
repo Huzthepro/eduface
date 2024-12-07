@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar">
-    <div class="logo">Eduface</div>
-    <div class="actions">
-      <button class="nav-btn">Inloggen</button>
-      <button class="nav-btn">Signup</button>
+    <img class="" src="/src/assets/logo.png" alt="LinkedIn" style="width: 150px; height: 40px" />
+    <div class="">
+      <button class="lgn-btn">Inloggen</button>
+      <button class="sgn-btn">Signup</button>
     </div>
   </nav>
 </template>
@@ -16,27 +16,39 @@ export default {
 
 <style scoped>
 .navbar {
+  margin: 20px auto;
   display: flex;
   width: 100%;
+  max-width: 1080px;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #f8f9fa;
 }
-.logo {
-  font-size: 1.5rem;
+
+.lgn-btn {
+  font-size: 1.1rem;
   font-weight: bold;
-}
-.actions .nav-btn {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
+  height: 40px;
+  background-color: rgba(128, 128, 128, 0);
+  padding: 8px 48px;
   border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
+  border-radius: 20px;
+  color: var(--vt-c-text-light-1);
   cursor: pointer;
 }
-.actions .nav-btn:hover {
-  background-color: #0056b3;
+.sgn-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  height: 40px;
+  margin-left: 1rem;
+  padding: 8px 48px;
+  border: none;
+  border-radius: 20px;
+  background-color: #002333;
+  color: white;
+  cursor: pointer;
+}
+.sgn-btn:hover {
+  background-color: #002333e1;
 }
 </style>
