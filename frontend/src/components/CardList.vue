@@ -9,6 +9,25 @@ export default defineComponent({
     const loading = ref(true)
     const error = ref<string | null>(null)
 
+    const saveApplication = async (card: {
+      id: number
+      title: string
+      company: string
+      location: string
+    }) => {
+      try {
+        const response = await axios.post(
+          'http://localhost:3000/api/applications/save-application',
+          card,
+        )
+        console.log('Application saved:', response.data)
+        alert('Application saved successfully!')
+      } catch (err) {
+        console.error('Error saving application:', err)
+        alert(err.response.data.message)
+      }
+    }
+
     onMounted(async () => {
       try {
         const response = await axios.get(
@@ -19,7 +38,7 @@ export default defineComponent({
         console.error('Error fetching applications:', err)
         error.value = 'Failed to fetch applications. Please try again.'
       } finally {
-        loading.value = false // Ensure loading is set to false
+        loading.value = false
       }
     })
 
@@ -27,6 +46,7 @@ export default defineComponent({
       cards,
       loading,
       error,
+      saveApplication,
     }
   },
 })
@@ -54,6 +74,7 @@ export default defineComponent({
           <div class="card-center">
             <h3 class="card-title">{{ card.title }}</h3>
             <p class="card-company">{{ card.company }}</p>
+            <button class="save-button" @click="saveApplication(card)">Save</button>
           </div>
 
           <!-- Right Section: Icons and Info -->
@@ -78,7 +99,6 @@ export default defineComponent({
 </template>
 
 <style scoped>
-/* Card List Container */
 .card-list {
   width: 75%;
   height: 100%;
@@ -90,7 +110,6 @@ export default defineComponent({
   padding: 1rem;
 }
 
-/* Individual Card */
 .card {
   display: flex;
   margin-bottom: 20px;
@@ -101,7 +120,6 @@ export default defineComponent({
   background-color: #fff;
 }
 
-/* Card Content */
 .card-content {
   display: flex;
   width: 100%;
@@ -109,7 +127,6 @@ export default defineComponent({
   justify-content: space-between;
 }
 
-/* Left Section: Logo */
 .card-left {
   margin-right: 1rem;
 }
@@ -120,7 +137,6 @@ export default defineComponent({
   object-fit: cover;
 }
 
-/* Center Section: Title and Company */
 .card-center {
   flex: 1;
   text-align: left;
@@ -135,8 +151,19 @@ export default defineComponent({
   color: #555;
   margin: 0;
 }
+.save-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #002333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.save-button:hover {
+  background-color: #002333c9;
+}
 
-/* Right Section: Icons and Info */
 .card-right {
   width: 25%;
   display: flex;
@@ -144,7 +171,7 @@ export default defineComponent({
   align-items: flex-start;
   border-left: 1px solid #ddd;
   padding-left: 1rem;
-  gap: 0.5rem; /* Spacing between rows */
+  gap: 0.5rem;
 }
 .info-row {
   display: flex;
