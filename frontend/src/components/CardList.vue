@@ -5,7 +5,7 @@ import Fetcher from '@/services/Fetcher'
 export default defineComponent({
   name: 'CardList',
   setup() {
-    const cards = ref([])
+    const cards = ref<Array<{ id: number; title: string; company: string; location: string }>>([])
     const loading = ref(true)
     const error = ref<string | null>(null)
     const saveMessages = ref<Record<number, string>>({})
@@ -20,9 +20,9 @@ export default defineComponent({
         const response = await Fetcher.post('applications/save-application', card)
         console.log('Application saved:', response)
         saveMessages.value[card.id] = 'Saved successfully!'
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error('Error saving application:', err)
-        saveMessages.value[card.id] = err.message || 'Failed to save application.'
+        saveMessages.value[card.id] = (err as Error).message || 'Failed to save application.'
       }
     }
 
@@ -30,7 +30,7 @@ export default defineComponent({
       try {
         const data = await Fetcher.get('applications/fetch-applications')
         cards.value = data
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error('Error fetching applications:', err)
         error.value = 'Failed to fetch applications. Please try again.'
       } finally {
@@ -104,11 +104,9 @@ export default defineComponent({
 <style scoped>
 .card-list {
   display: flex;
-  margin: auto;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 .card {

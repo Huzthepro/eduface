@@ -66,11 +66,14 @@ export default defineComponent({
     >
       <iframe
         src="/"
-        style="width: 100%; height: 100%; border: 1px solid #ccc"
+        style="width: 100%; height: 100%; border: 3px solid #ccc"
         frameborder="0"
       ></iframe>
 
-      <div class="resizer" @mousedown="handleMouseDown"></div>
+      <div class="resizer" @mousedown="handleMouseDown">
+        <img src="/src/assets/resize.png" alt="Resize" />
+      </div>
+      <p class="resizer-info">mouse should be outside of the iframe while sizing</p>
     </div>
   </div>
 </template>
@@ -80,7 +83,8 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  padding-top: 64px;
   height: 100vh;
   background-color: #f0f0f0;
 }
@@ -88,31 +92,39 @@ export default defineComponent({
 .back-button {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #002333;
-  color: white;
+  background-color: var(--vt-c-text-light-1);
+  color: var(--vt-c-text-dark-1);
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 1rem;
 }
 .back-button:hover {
-  background-color: #005666;
+  background-color: var(--vt-c-black-soft);
 }
 
 .iframe-div {
   position: relative;
   background: white;
-  overflow: hidden;
 }
 
 .resizer {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  background: rgb(51, 177, 128);
-  border: 2px solid #002333;
+  bottom: -25px;
+  right: -25px;
+  width: 25px;
+  height: 25px;
   cursor: se-resize;
+}
+.resizer img {
+  width: 100%;
+  height: 100%;
+}
+.resizer-info {
+  position: absolute;
+  right: 10px;
+
+  font-size: 0.8rem;
+  color: #555;
 }
 </style>
