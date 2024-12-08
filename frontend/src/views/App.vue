@@ -3,6 +3,7 @@ import { defineComponent, ref, onMounted } from 'vue'
 import AppNavbar from '../components/Navbar.vue'
 import AppFooter from '../components/Footer.vue'
 import CardList from '../components/CardList.vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'App',
@@ -12,6 +13,7 @@ export default defineComponent({
     CardList,
   },
   setup() {
+    const router = useRouter()
     const isInIframe = ref(false)
 
     const iframeToggle = () => {
@@ -25,8 +27,11 @@ export default defineComponent({
     onMounted(() => {
       checkIfInIframe()
     })
+    const navigateToIframeTest = () => {
+      router.push('/iframe-container')
+    }
 
-    return { iframeToggle, isInIframe }
+    return { iframeToggle, isInIframe, navigateToIframeTest }
   },
 })
 </script>
@@ -34,8 +39,15 @@ export default defineComponent({
 <template>
   <div id="app" :class="{ iframe: isInIframe }">
     <AppNavbar />
-    <div v-if="!isInIframe" class="iframe-info" @click="iframeToggle">Web Mode</div>
-    <div v-if="isInIframe" class="iframe-info" @click="iframeToggle">Iframe Mode</div>
+    <div class="iframe-control">
+      <div class="iframe-toggle" @click="iframeToggle">
+        {{ isInIframe ? 'Iframe Mode' : 'Web Mode' }}
+      </div>
+      <div class="iframe-link" @click="navigateToIframeTest">
+        Click to: Inside iframe on page load
+      </div>
+    </div>
+
     <div id="content">
       <CardList />
     </div>
@@ -47,25 +59,42 @@ export default defineComponent({
 #app {
   display: flex;
   flex-direction: column;
-  max-width: 100vw;
+  width: 100vw;
   height: 100vh;
   overflow-y: scroll;
-  background-color: #f5f5f5;
 }
-#content {
-  flex-grow: 1;
+#app.iframe {
+  width: 100%;
 }
 
-.iframe-info {
+#content {
+  display: flex;
+  margin: auto;
+  flex-grow: 1;
+  align-items: start;
+  width: 100%;
+  max-width: 1280px;
+  padding: 20px 64px;
+}
+
+.iframe-control {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+.iframe-link {
   cursor: pointer;
-  position: sticky;
-  margin-bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: fit-content;
-  background-color: #002333;
-  padding: 5px 12px;
+}
+.iframe-toggle {
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--vt-c-text-light-1);
+  padding: 5px 12px 4px 12px;
   border-radius: 30px;
-  color: white;
+  color: var(--vt-c-text-dark-1);
 }
 </style>

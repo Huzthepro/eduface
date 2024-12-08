@@ -1,75 +1,93 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'AppNavbar',
+})
+</script>
 <template>
   <nav class="navbar">
-    <img class="" src="/src/assets/logo.png" alt="LinkedIn" style="width: 150px; height: 40px" />
-    <div class="">
-      <button class="lgn-btn" @click="navigateToIframeContainer">IFrame Check</button>
-      <button class="sgn-btn" @click="navigateToSignup">Signup</button>
+    <div class="logo">
+      <img src="/src/assets/logo.png" alt="Eduface" />
+    </div>
+
+    <div class="nav-btn">
+      <button class="lgn-btn">Inloggen</button>
+      <button class="sgn-btn">Signup</button>
     </div>
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
-
-export default defineComponent({
-  name: 'AppNavbar',
-  setup() {
-    const router = useRouter()
-
-    const navigateToIframeContainer = () => {
-      router.push('/iframe-container')
-    }
-
-    const navigateToSignup = () => {
-      router.push('/')
-    }
-
-    return {
-      navigateToIframeContainer,
-      navigateToSignup,
-    }
-  },
-})
-</script>
-
 <style scoped>
 .navbar {
+  width: 100%;
+  max-width: 1280px;
   margin: 20px auto;
+  padding: 10px 64px;
+
   display: flex;
-  width: 90%;
-  max-width: 1080px;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+}
+
+.logo {
+  cursor: pointer;
+  width: 150px;
+  min-width: 150px;
+  height: 40px;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
 }
 
 .lgn-btn {
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight: bold;
   height: 40px;
-  background-color: rgba(128, 128, 128, 0);
+  background-color: transparent;
   padding: 8px 48px;
   border: none;
-  border-radius: 20px;
   color: var(--vt-c-text-light-1);
   cursor: pointer;
 }
 
 .sgn-btn {
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight: bold;
   height: 40px;
   margin-left: 1rem;
   padding: 8px 48px;
   border: none;
   border-radius: 20px;
-  background-color: #002333;
+  background-color: var(--color-text);
   color: white;
   cursor: pointer;
 }
 
 .sgn-btn:hover {
-  background-color: #002333e1;
+  background-color: var(--vt-c-black-soft);
+}
+
+/* Media query for screens smaller than 530px */
+@media screen and (max-width: 620px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .logo {
+    width: 100px;
+    min-width: 100px;
+    height: 30px;
+  }
+  .nav-btn {
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+  }
+  .lgn-btn,
+  .sgn-btn {
+    font-size: 16px;
+    padding: 8px 24px;
+  }
 }
 </style>

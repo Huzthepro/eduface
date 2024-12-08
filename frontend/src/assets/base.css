@@ -31,25 +31,24 @@
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
 
-  --color-eduface-green: rgba(2, 224, 118, 255);
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
   --color-text-muted: rgba(186, 186, 186, 255);
 
   --section-gap: 160px;
+
+  --color-eduface-green: rgba(2, 224, 118, 255);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
   font-family: 'League Spartan', sans-serif;
+  margin: 0;
 }
 
 body {
-  min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
   transition:
