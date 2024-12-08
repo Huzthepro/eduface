@@ -2,16 +2,37 @@
   <nav class="navbar">
     <img class="" src="/src/assets/logo.png" alt="LinkedIn" style="width: 150px; height: 40px" />
     <div class="">
-      <button class="lgn-btn">Inloggen</button>
-      <button class="sgn-btn">Signup</button>
+      <!-- "Inloggen" navigates to the iframe-container -->
+      <button class="lgn-btn" @click="navigateToIframeContainer">Inloggen</button>
+      <!-- "Signup" navigates to a placeholder (update later with the correct path) -->
+      <button class="sgn-btn" @click="navigateToSignup">Signup</button>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default defineComponent({
   name: 'AppNavbar',
-}
+  setup() {
+    const router = useRouter()
+
+    const navigateToIframeContainer = () => {
+      router.push('/iframe-container')
+    }
+
+    const navigateToSignup = () => {
+      router.push('/')
+    }
+
+    return {
+      navigateToIframeContainer,
+      navigateToSignup,
+    }
+  },
+})
 </script>
 
 <style scoped>
@@ -36,6 +57,7 @@ export default {
   color: var(--vt-c-text-light-1);
   cursor: pointer;
 }
+
 .sgn-btn {
   font-size: 1.1rem;
   font-weight: bold;
@@ -48,6 +70,7 @@ export default {
   color: white;
   cursor: pointer;
 }
+
 .sgn-btn:hover {
   background-color: #002333e1;
 }
