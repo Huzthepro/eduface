@@ -7,15 +7,15 @@
         <p>+31 6 3773 5018</p>
       </div>
       <div class="upper-footer-center">
-        <h2>Leer het Eduface team kennen</h2>
-        <h2>
+        <p>Leer het Eduface team kennen</p>
+        <p>
           Volg ons op LinkedIn
           <img
             src="/src/assets/linkedin.svg"
             alt="LinkedIn"
             style="width: 1.2rem; height: 1.2rem"
           />
-        </h2>
+        </p>
       </div>
       <div class="upper-footer-right">
         <p>Langegracht 70</p>
@@ -30,8 +30,8 @@
           <p>&copy; Copyright 2024 Eduface</p>
         </div>
         <div class="right">
-          <P>Algemene voorwaarden</P>
-          <P>Privacyverklaring</P>
+          <p>Algemene voorwaarden</p>
+          <p>Privacyverklaring</p>
         </div>
       </div>
     </div>
@@ -45,6 +45,12 @@ export default {
 </script>
 
 <style scoped>
+p {
+  margin-block-start: 5px;
+  margin-block-end: 5px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 .footer {
   margin: auto;
   width: 100%;
@@ -52,38 +58,31 @@ export default {
 }
 .upper-footer {
   width: 80%;
+  height: auto;
   max-width: 1080px;
   margin: auto;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 1rem;
   font-size: 0.8rem;
 }
-.upper-footer-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-}
-.upper-footer-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1rem;
-}
+.upper-footer-left,
+.upper-footer-center,
 .upper-footer-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-end;
 }
+
+.upper-footer-center {
+  font-weight: 700;
+  font-size: 1rem;
+  align-items: center;
+}
+
 .bottom-footer {
   border-radius: 36px 36px 0 0;
   background-color: #002333;
   width: 100%;
-  padding: 35px 0px;
+  padding: 15px 0px;
 }
 .bottom-footer-container {
   width: 80%;
@@ -98,5 +97,25 @@ export default {
 .right {
   display: flex;
   gap: 2rem;
+}
+
+/* Responsive design for screens smaller than 650px */
+@media screen and (max-width: 650px) {
+  .upper-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .upper-footer-left,
+  .upper-footer-center,
+  .upper-footer-right {
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .upper-footer-center p {
+    text-align: center;
+  }
 }
 </style>

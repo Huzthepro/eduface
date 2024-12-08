@@ -11,7 +11,6 @@ export default defineComponent({
 </template>
 
 <style>
-/* Global styles can be added here */
 body {
   margin: 0;
   font-family: Arial, sans-serif;

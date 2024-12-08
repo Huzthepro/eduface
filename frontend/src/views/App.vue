@@ -14,19 +14,19 @@ export default defineComponent({
   setup() {
     const isInIframe = ref(false)
 
-    // Check if the page is loaded in an iframe
+    const iframeToggle = () => {
+      isInIframe.value = !isInIframe.value
+    }
+
     const checkIfInIframe = () => {
       isInIframe.value = window.self !== window.top
     }
 
-    // Run the iframe check when the component is mounted
     onMounted(() => {
       checkIfInIframe()
     })
 
-    return {
-      isInIframe,
-    }
+    return { iframeToggle, isInIframe }
   },
 })
 </script>
@@ -34,6 +34,8 @@ export default defineComponent({
 <template>
   <div id="app" :class="{ iframe: isInIframe }">
     <AppNavbar />
+    <div v-if="!isInIframe" class="iframe-info" @click="iframeToggle">Web Mode</div>
+    <div v-if="isInIframe" class="iframe-info" @click="iframeToggle">Iframe Mode</div>
     <div id="content">
       <CardList />
     </div>
@@ -54,10 +56,16 @@ export default defineComponent({
   flex-grow: 1;
 }
 
-#app.iframe {
-}
-
-#app.iframe #content {
-  background-color: rgb(255, 187, 0);
+.iframe-info {
+  cursor: pointer;
+  position: sticky;
+  margin-bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  background-color: #002333;
+  padding: 5px 12px;
+  border-radius: 30px;
+  color: white;
 }
 </style>

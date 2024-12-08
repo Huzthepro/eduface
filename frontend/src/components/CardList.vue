@@ -8,7 +8,7 @@ export default defineComponent({
     const cards = ref([])
     const loading = ref(true)
     const error = ref<string | null>(null)
-    const saveMessages = ref<Record<number, string>>({}) // Store messages (success or error) for each card
+    const saveMessages = ref<Record<number, string>>({})
 
     const saveApplication = async (card: {
       id: number
@@ -19,10 +19,10 @@ export default defineComponent({
       try {
         const response = await Fetcher.post('applications/save-application', card)
         console.log('Application saved:', response)
-        saveMessages.value[card.id] = 'Saved successfully!' // Set success message
+        saveMessages.value[card.id] = 'Saved successfully!'
       } catch (err: any) {
         console.error('Error saving application:', err)
-        saveMessages.value[card.id] = err.message || 'Failed to save application.' // Set error message
+        saveMessages.value[card.id] = err.message || 'Failed to save application.'
       }
     }
 
@@ -80,10 +80,19 @@ export default defineComponent({
               </p>
             </div>
           </div>
+          <!-- Right Section: Icons and Info -->
           <div class="card-right">
             <div class="info-row">
               <img src="/src/assets/Location.png" alt="Location" class="icon" />
               <span>{{ card.location }}</span>
+            </div>
+            <div class="info-row">
+              <img src="/src/assets/clock.png" alt="Time" class="icon" />
+              <span>12:30</span>
+            </div>
+            <div class="info-row">
+              <img src="/src/assets/euro.png" alt="Price" class="icon" />
+              <span>30€</span>
             </div>
           </div>
         </div>
@@ -95,6 +104,8 @@ export default defineComponent({
 <style scoped>
 .card-list {
   display: flex;
+  margin: auto;
+  width: 80%;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
@@ -145,7 +156,7 @@ export default defineComponent({
 .button-message-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between button and message */
+  gap: 10px;
   margin-top: 10px;
 }
 
@@ -188,5 +199,43 @@ export default defineComponent({
   width: 16px;
   height: 16px;
   margin-right: 0.5rem;
+}
+
+/* Responsive design for screens smaller than 500px */
+@media screen and (max-width: 500px) {
+  .card-content {
+    display: grid;
+    grid-template-areas:
+      'left center'
+      'right right'; /* Move .card-right to a new row */
+    grid-template-columns: auto 1fr; /* .card-left adjusts automatically, .card-center takes the remaining space */
+    grid-gap: 1rem; /* Add spacing between grid areas */
+    align-items: start; /* Align items to the top */
+    width: 100%;
+    align-items: center;
+  }
+
+  .card-left {
+    grid-area: left; /* Place .card-left in the left section */
+  }
+
+  .card-center {
+    grid-area: center; /* Place .card-center in the center section */
+  }
+
+  .card-right {
+    grid-area: right; /* Move .card-right to the bottom row */
+    width: 100%; /* Take full width */
+    border-left: none; /* Remove left border */
+    padding-left: 0; /* Remove padding */
+    margin-top: 0; /* Reset top margin */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .info-row {
+    justify-content: flex-start;
+  }
 }
 </style>

@@ -1,13 +1,15 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'IframeContainer',
   setup() {
+    const router = useRouter()
     const iframeDiv = ref<HTMLElement | null>(null)
     const isResizing = ref(false)
     const mouseStart = ref({ x: 0, y: 0 })
-    const divSize = ref({ width: 80, height: 50 }) // Initial size in percentage
+    const divSize = ref({ width: 80, height: 50 })
 
     const handleMouseDown = (event: MouseEvent) => {
       isResizing.value = true
@@ -24,8 +26,8 @@ export default defineComponent({
       const newWidth = divSize.value.width + (deltaX / window.innerWidth) * 100
       const newHeight = divSize.value.height + (deltaY / window.innerHeight) * 100
 
-      divSize.value.width = Math.min(Math.max(newWidth, 20), 100) // Keep between 20% and 100%
-      divSize.value.height = Math.min(Math.max(newHeight, 20), 100) // Keep between 20% and 100%
+      divSize.value.width = Math.min(Math.max(newWidth, 20), 100)
+      divSize.value.height = Math.min(Math.max(newHeight, 20), 100)
 
       mouseStart.value = { x: event.clientX, y: event.clientY }
     }
@@ -39,10 +41,15 @@ export default defineComponent({
       window.addEventListener('mouseup', handleMouseUp)
     })
 
+    const navigateToHome = () => {
+      router.push('/')
+    }
+
     return {
       iframeDiv,
       divSize,
       handleMouseDown,
+      navigateToHome,
     }
   },
 })
@@ -51,6 +58,7 @@ export default defineComponent({
 <template>
   <div id="iframe-container">
     <h1 style="text-align: center; margin-bottom: 20px">Iframe Test Container</h1>
+    <button class="back-button" @click="navigateToHome">Back to Home Page</button>
     <div
       ref="iframeDiv"
       class="iframe-div"
@@ -61,7 +69,7 @@ export default defineComponent({
         style="width: 100%; height: 100%; border: 1px solid #ccc"
         frameborder="0"
       ></iframe>
-      <!-- Resizer handle -->
+
       <div class="resizer" @mousedown="handleMouseDown"></div>
     </div>
   </div>
@@ -77,20 +85,34 @@ export default defineComponent({
   background-color: #f0f0f0;
 }
 
+.back-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #002333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.back-button:hover {
+  background-color: #005666;
+}
+
 .iframe-div {
   position: relative;
   background: white;
   overflow: hidden;
 }
 
-/* Styling for the resizer handle */
 .resizer {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 10px;
   height: 10px;
-  background: gray;
+  background: rgb(51, 177, 128);
+  border: 2px solid #002333;
   cursor: se-resize;
 }
 </style>

@@ -2,9 +2,7 @@
   <nav class="navbar">
     <img class="" src="/src/assets/logo.png" alt="LinkedIn" style="width: 150px; height: 40px" />
     <div class="">
-      <!-- "Inloggen" navigates to the iframe-container -->
-      <button class="lgn-btn" @click="navigateToIframeContainer">Inloggen</button>
-      <!-- "Signup" navigates to a placeholder (update later with the correct path) -->
+      <button class="lgn-btn" @click="navigateToIframeContainer">IFrame Check</button>
       <button class="sgn-btn" @click="navigateToSignup">Signup</button>
     </div>
   </nav>
