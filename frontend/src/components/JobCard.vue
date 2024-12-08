@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
+import { useSaveApplication } from '@/composables/useSaveApplication'
 
 export default defineComponent({
   name: 'JobCard',
@@ -9,16 +10,19 @@ export default defineComponent({
       type: Object as PropType<{ id: number; title: string; company: string; location: string }>,
       required: true,
     },
-    saveMessage: {
-      type: String,
-      default: null,
-    },
-    onSave: {
-      type: Function as PropType<
-        (card: { id: number; title: string; company: string; location: string }) => void
-      >,
-      required: true,
-    },
+  },
+  setup(props) {
+    const { loading, saveMessages, saveApplication } = useSaveApplication()
+
+    const handleSave = () => {
+      saveApplication(props.card)
+    }
+
+    return {
+      loading,
+      saveMessages,
+      handleSave,
+    }
   },
 })
 </script>
@@ -27,18 +31,20 @@ export default defineComponent({
   <div class="card">
     <div class="card-content">
       <div class="card-left">
-        <img src="/src/assets/icon.png" alt="Logo" />
+        <img src="/src/assets/icon.png" alt="Logo" class="logo" />
       </div>
       <div class="card-center">
         <h3 class="card-title">{{ card.title }}</h3>
         <p class="card-company">{{ card.company }}</p>
         <div class="button-message-container">
-          <button class="save-button" @click="onSave(card)">Save</button>
+          <button class="save-button" @click="handleSave" :disabled="loading">
+            {{ loading ? 'Saving...' : 'Save' }}
+          </button>
           <p
-            v-if="saveMessage"
-            :class="saveMessage.includes('Saved') ? 'save-success' : 'save-error'"
+            v-if="saveMessages[card.id]"
+            :class="saveMessages[card.id].includes('saved') ? 'save-success' : 'save-error'"
           >
-            {{ saveMessage }}
+            {{ saveMessages[card.id] }}
           </p>
         </div>
       </div>
@@ -160,31 +166,36 @@ export default defineComponent({
     display: grid;
     grid-template-areas:
       'left center'
-      'right right'; /* Move .card-right to a new row */
-    grid-template-columns: auto 1fr; /* .card-left adjusts automatically, .card-center takes the remaining space */
-    grid-gap: 1rem; /* Add spacing between grid areas */
-    align-items: start; /* Align items to the top */
+      'right right';
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+    align-items: start;
     width: 100%;
     align-items: center;
   }
 
   .card-left {
-    grid-area: left; /* Place .card-left in the left section */
+    grid-area: left;
+    margin-right: 10px;
+    margin-left: 8px;
+    height: 50px;
+    width: 50px;
   }
 
   .card-center {
-    grid-area: center; /* Place .card-center in the center section */
+    grid-area: center;
   }
 
   .card-right {
-    grid-area: right; /* Move .card-right to the bottom row */
-    width: 100%; /* Take full width */
-    border-left: none; /* Remove left border */
-    padding-left: 0; /* Remove padding */
-    margin-top: 0; /* Reset top margin */
+    grid-area: right;
+    width: 100%;
+    border-left: none;
+    padding-left: 0;
+    margin-top: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .info-row {

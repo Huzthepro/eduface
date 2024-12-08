@@ -14,21 +14,6 @@ export default defineComponent({
     const cards = ref<Array<{ id: number; title: string; company: string; location: string }>>([])
     const loading = ref(true)
     const error = ref<string | null>(null)
-    const saveMessages = ref<Record<number, string>>({})
-
-    const saveApplication = async (card: {
-      id: number
-      title: string
-      company: string
-      location: string
-    }) => {
-      try {
-        const response = await Fetcher.post('applications/save-application', card)
-        saveMessages.value[card.id] = response.message
-      } catch (err: unknown) {
-        saveMessages.value[card.id] = (err as Error).message || 'Failed to save application.'
-      }
-    }
 
     onMounted(async () => {
       try {
@@ -36,7 +21,7 @@ export default defineComponent({
         cards.value = data
       } catch (err: unknown) {
         error.value = 'Failed to get job listings. Please try again later.'
-        console.log((err as Error).message)
+        console.error((err as Error).message)
       } finally {
         loading.value = false
       }
@@ -46,8 +31,6 @@ export default defineComponent({
       cards,
       loading,
       error,
-      saveMessages,
-      saveApplication,
     }
   },
 })
@@ -60,13 +43,7 @@ export default defineComponent({
       <p>{{ error }}</p>
     </div>
     <div v-else>
-      <JobCard
-        v-for="card in cards"
-        :key="card.id"
-        :card="card"
-        :saveMessage="saveMessages[card.id]"
-        :onSave="saveApplication"
-      />
+      <JobCard v-for="card in cards" :key="card.id" :card="card" />
     </div>
   </div>
 </template>

@@ -127,28 +127,28 @@ export default defineComponent({
     display: grid;
     grid-template-areas:
       'left center'
-      'right right'; /* Move .card-right to a new row */
-    grid-template-columns: auto 1fr; /* .card-left adjusts automatically, .card-center takes the remaining space */
-    grid-gap: 1rem; /* Add spacing between grid areas */
-    align-items: start; /* Align items to the top */
+      'right right';
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+    align-items: start;
     width: 100%;
     align-items: center;
   }
 
   .card-left {
-    grid-area: left; /* Place .card-left in the left section */
+    grid-area: left;
   }
 
   .card-center {
-    grid-area: center; /* Place .card-center in the center section */
+    grid-area: center;
   }
 
   .card-right {
-    grid-area: right; /* Move .card-right to the bottom row */
-    width: 100%; /* Take full width */
-    border-left: none; /* Remove left border */
-    padding-left: 0; /* Remove padding */
-    margin-top: 0; /* Reset top margin */
+    grid-area: right;
+    width: 100%;
+    border-left: none;
+    padding-left: 0;
+    margin-top: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
