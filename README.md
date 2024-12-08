@@ -61,6 +61,10 @@ PORT=3000
 Set up the database by creating a table using the following SQL schema:
 
 ```sql
+CREATE DATABASE IF NOT EXISTS job_applications;
+
+USE job_applications;
+
 CREATE TABLE IF NOT EXISTS job_applications (
   id INT PRIMARY KEY,
   title VARCHAR(25) NOT NULL,
