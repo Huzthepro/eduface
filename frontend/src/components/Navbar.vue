@@ -21,9 +21,9 @@ export default defineComponent({
 <style scoped>
 .navbar {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 20px auto;
-  padding: 10px 20px;
+  padding: 10px 64px;
 
   display: flex;
   justify-content: space-between;
@@ -31,7 +31,9 @@ export default defineComponent({
 }
 
 .logo {
+  cursor: pointer;
   width: 150px;
+  min-width: 150px;
   height: 40px;
 }
 .logo img {
@@ -68,7 +70,7 @@ export default defineComponent({
 }
 
 /* Media query for screens smaller than 530px */
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 620px) {
   .navbar {
     flex-direction: column;
   }
