@@ -61,9 +61,9 @@ export default defineComponent({
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  overflow-y: scroll;
 }
 #app.iframe {
-  overflow-y: scroll;
   width: 100%;
 }
 
