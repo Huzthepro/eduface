@@ -50,7 +50,7 @@ export default defineComponent({
       </div>
       <div class="card-right">
         <div class="info-row">
-          <img src="/src/assets/Location.png" alt="Location" class="icon" />
+          <img src="/src/assets/location.png" alt="Location" class="icon" />
           <span>{{ card.location }}</span>
         </div>
         <div class="info-row">

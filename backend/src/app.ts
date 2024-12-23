@@ -21,7 +21,6 @@ app.use(express.json());
 (async () => {
   try {
     await connectDatabase();
-    console.log("Database connected successfully!");
   } catch (error) {
     console.error("Database connection failed:", error);
     process.exit(1);

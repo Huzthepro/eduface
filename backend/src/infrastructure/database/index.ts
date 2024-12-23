@@ -12,16 +12,15 @@ export const connectDatabase = async (): Promise<mysql.Pool> => {
 
   try {
     pool = mysql.createPool({
-      host: process.env.DB_HOST || "localhost",
+      host: process.env.DB_HOST || "",
       user: process.env.DB_USER || "root",
       password: process.env.DB_PASSWORD || "",
-      database: process.env.DB_NAME || "job_applications",
+      database: process.env.DB_NAME || "",
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,
     });
 
-    console.log("Database connected successfully!");
     return pool;
   } catch (error) {
     console.error("Failed to connect to the database:", error);
