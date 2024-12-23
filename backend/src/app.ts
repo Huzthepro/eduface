@@ -6,30 +6,27 @@ import {
   errorHandler,
   notFoundHandler,
 } from "./infrastructure/api/middlewares/error-handler";
+import { initializeAdapters } from "./infrastructure/adapters/adapters.di";
+
 const app = express();
 
-// const corsOptions = {
-//   origin: ['http://a.com', 'https://b.com'], // Allowed origins
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-//   credentials: true
-// };
 app.use(cors());
 app.use(express.json());
 
-// Database connection
+// Initialize database and adapters
 (async () => {
   try {
-    await connectDatabase();
+    const database = await connectDatabase();
+
+    // Initialize adapters with database
+    await initializeAdapters(database); // Pass the database dependency
   } catch (error) {
-    console.error("Database connection failed:", error);
+    console.error("Failed to initialize the application:", error);
     process.exit(1);
   }
 })();
-
-// Routes
+// Configure routes
 configureRoutes(app);
-
 app.use(notFoundHandler);
 app.use(errorHandler);
 

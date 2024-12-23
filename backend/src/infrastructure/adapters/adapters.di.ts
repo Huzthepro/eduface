@@ -1,6 +1,4 @@
 import { JobApplicationController } from "../api/controllers/JobApplicationController";
-import { connectDatabase } from "../database";
-
 import { MockLmsApiAdapter } from "./external/MockLmsApiAdapter";
 import { JobApplicationRepositoryImpl } from "./JobApplicationRepositoryImpl";
 
@@ -11,9 +9,9 @@ import { GetSavedApplicationsUseCase } from "../../core/use-cases/GetSavedApplic
 
 let jobApplicationController: JobApplicationController;
 
-(async () => {
-  // Connect to the database
-  const database = await connectDatabase();
+// Create a function to initialize dependencies
+export const initializeAdapters = async (database: any) => {
+  console.log("Initializing adapters...");
 
   // Adapters
   const jobApplicationRepository = new JobApplicationRepositoryImpl(database);
@@ -40,6 +38,6 @@ let jobApplicationController: JobApplicationController;
     getApplicationUseCase,
     getSavedApplicationsUseCase
   );
-})();
+};
 
 export { jobApplicationController };
