@@ -7,11 +7,14 @@ import {
   notFoundHandler,
 } from "./infrastructure/api/middlewares/error-handler";
 import { initializeAdapters } from "./infrastructure/adapters/adapters.di";
+import { validateEnv } from "./infrastructure/validation/envValidation";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+// Validate environment variables
+validateEnv(); // Call validation before connecting to the database
 
 // Initialize database and adapters
 (async () => {
@@ -21,8 +24,9 @@ app.use(express.json());
     // Initialize adapters with database
     await initializeAdapters(database); // Pass the database dependency
   } catch (error) {
-    console.error("Failed to initialize the application:", error);
-    process.exit(1);
+    console.error("❌ Failed to connect database:");
+    console.error(error);
+    console.warn("⚠️ Continuing without database...");
   }
 })();
 // Configure routes

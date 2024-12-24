@@ -11,6 +11,7 @@ export const connectDatabase = async (): Promise<mysql.Pool> => {
   }
 
   try {
+    // Create pool
     pool = mysql.createPool({
       host: process.env.DB_HOST || "",
       user: process.env.DB_USER || "root",
@@ -21,9 +22,14 @@ export const connectDatabase = async (): Promise<mysql.Pool> => {
       queueLimit: 0,
     });
 
+    // Test connection with ping
+    const connection = await pool.getConnection(); // Acquire a connection from the pool
+    await connection.ping(); // Test if the connection is alive
+    connection.release(); // Release the connection back to the pool
+
+    console.log("✅ Database connected successfully!");
     return pool;
   } catch (error) {
-    console.error("Failed to connect to the database:", error);
-    throw new Error("Database connection failed.");
+    throw new Error((error as Error).message); // Throw an error if connection fails
   }
 };

@@ -11,8 +11,6 @@ let jobApplicationController: JobApplicationController;
 
 // Create a function to initialize dependencies
 export const initializeAdapters = async (database: any) => {
-  console.log("Initializing adapters...");
-
   // Adapters
   const jobApplicationRepository = new JobApplicationRepositoryImpl(database);
   const externalApiService = new MockLmsApiAdapter();
