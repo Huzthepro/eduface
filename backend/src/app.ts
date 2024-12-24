@@ -1,13 +1,13 @@
 import express from "express";
 import cors from "cors";
-import { connectDatabase } from "./infrastructure/database";
-import { configureRoutes } from "./infrastructure/api";
+import { connectDatabase } from "infrastructure/database";
+import { configureRoutes } from "infrastructure/api";
 import {
   errorHandler,
   notFoundHandler,
-} from "./infrastructure/api/middlewares/error-handler";
-import { initializeAdapters } from "./infrastructure/adapters/job-application/adapters.di";
-import { validateEnv } from "./infrastructure/validation/envValidation";
+} from "infrastructure/api/middlewares/error-handler";
+import { initializeAdapters } from "infrastructure/adapters/job-application/adapters.di";
+import { validateEnv } from "infrastructure/validation/envValidation";
 
 const app = express();
 
