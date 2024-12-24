@@ -7,11 +7,14 @@ class Fetcher {
 
   constructor() {
     // Use Vite's environment variable access
-    const domain = import.meta.env.VITE_BACKEND_URL
+    let domain = import.meta.env.VITE_BACKEND_URL
 
     if (!domain) {
       console.error('Backend URL is not defined in environment variables!')
+      console.warn('⚠️ Setting default URL: http://localhost:3000')
+      domain = 'http://localhost:3000'
     }
+
     this.apiUrl = `${domain}/api/`
     this.defaultHeaders = {}
   }

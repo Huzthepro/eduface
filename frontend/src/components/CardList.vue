@@ -21,7 +21,7 @@ export default defineComponent({
         cards.value = data
       } catch (err: unknown) {
         error.value = 'Failed to get job listings. Please try again later.'
-        console.error((err as Error).message)
+        console.error(err as Error)
       } finally {
         loading.value = false
       }
