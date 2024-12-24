@@ -1,5 +1,5 @@
 import express from "express";
-import { jobApplicationController } from "../../adapters/adapters.di";
+import { jobApplicationController } from "../../adapters/job-application/adapters.di";
 import { validateJobApplication } from "../middlewares/validate-request";
 
 const router = express.Router();

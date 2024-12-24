@@ -1,11 +1,11 @@
-import { JobApplicationController } from "../api/controllers/JobApplicationController";
-import { MockLmsApiAdapter } from "./external/MockLmsApiAdapter";
+import { JobApplicationController } from "../../../infrastructure/api/controllers/JobApplicationController";
+import { MockLmsApiAdapter } from "../../../infrastructure/adapters/external/MockLmsApiAdapter";
 import { JobApplicationRepositoryImpl } from "./JobApplicationRepositoryImpl";
 
-import { FetchApplicationsUseCase } from "../../core/use-cases/FetchApplicationsUseCase";
-import { SaveApplicationUseCase } from "../../core/use-cases/SaveApplicationUseCase";
-import { GetApplicationUseCase } from "../../core/use-cases/GetApplicationUseCase";
-import { GetSavedApplicationsUseCase } from "../../core/use-cases/GetSavedApplicationsUseCase";
+import { FetchApplicationsUseCase } from "../../../core/use-cases/job-application/FetchApplicationsUseCase";
+import { SaveApplicationUseCase } from "../../../core/use-cases/job-application/SaveApplicationUseCase";
+import { GetApplicationUseCase } from "../../../core/use-cases/job-application/GetApplicationUseCase";
+import { GetSavedApplicationsUseCase } from "../../../core/use-cases/job-application/GetSavedApplicationsUseCase";
 
 let jobApplicationController: JobApplicationController;
 

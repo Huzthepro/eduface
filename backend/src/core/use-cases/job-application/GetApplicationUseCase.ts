@@ -1,4 +1,4 @@
-import { JobApplicationRepository } from "../ports/JobApplicationRepository";
+import { JobApplicationRepository } from "core/ports/JobApplicationRepository";
 
 export class GetApplicationUseCase {
   constructor(private jobApplicationRepository: JobApplicationRepository) {}

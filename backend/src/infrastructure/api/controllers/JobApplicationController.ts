@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import { FetchApplicationsUseCase } from "../../../core/use-cases/FetchApplicationsUseCase";
-import { SaveApplicationUseCase } from "../../../core/use-cases/SaveApplicationUseCase";
-import { GetApplicationUseCase } from "../../../core/use-cases/GetApplicationUseCase";
-import { GetSavedApplicationsUseCase } from "../../../core/use-cases/GetSavedApplicationsUseCase";
+import { FetchApplicationsUseCase } from "core/use-cases/job-application/FetchApplicationsUseCase";
+import { SaveApplicationUseCase } from "core/use-cases/job-application/SaveApplicationUseCase";
+import { GetApplicationUseCase } from "core/use-cases/job-application/GetApplicationUseCase";
+import { GetSavedApplicationsUseCase } from "core/use-cases/job-application/GetSavedApplicationsUseCase";
 
 export class JobApplicationController {
   constructor(

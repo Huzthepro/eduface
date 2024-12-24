@@ -1,0 +1,7 @@
+services:
+  backend:
+    volumes:
+      - ./backend:/app # Mount the local code into the container
+      - /app/node_modules # Ignore node_modules (avoid overwriting it)
+      # - ./backend:/app:cached # Use cached mode(if you don't want docker to change the files)
+    command: ["npm", "run", "dev"] # Use development mode
