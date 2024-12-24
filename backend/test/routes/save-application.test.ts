@@ -4,7 +4,7 @@ import { describe, it, expect } from "@jest/globals";
 
 describe("POST /api/applications/save-application", () => {
   const validPayload = {
-    id: "29",
+    id: Math.floor(Math.random() * 100000).toString(), // Random ID
     title: "Software Developer",
     company: "Eduface",
     location: "Remote",
