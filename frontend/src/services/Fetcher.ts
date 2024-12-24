@@ -6,12 +6,14 @@ class Fetcher {
   private defaultHeaders: Record<string, string>
 
   constructor() {
-    const domain = 'http://localhost:3000'
-    this.apiUrl = `${domain}/api/`
-    this.defaultHeaders = {
-      // Example authorization header (update or uncomment as needed)
-      // Authorization: "Bearer " + JSON.parse(localStorage.getItem("user"))?.token || "",
+    // Use Vite's environment variable access
+    const domain = import.meta.env.VITE_BACKEND_URL
+
+    if (!domain) {
+      console.error('Backend URL is not defined in environment variables!')
     }
+    this.apiUrl = `${domain}/api/`
+    this.defaultHeaders = {}
   }
 
   async get(url: string) {
