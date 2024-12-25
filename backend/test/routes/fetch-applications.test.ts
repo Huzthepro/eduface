@@ -2,11 +2,9 @@ import request from "supertest";
 import app from "../../src/app";
 import { describe, test, expect } from "@jest/globals";
 
-describe("Fetch Applications Route", () => {
-  test("GET /api/applications/fetch-applications", async () => {
-    const response = await request(app).get(
-      "/api/applications/fetch-applications"
-    );
+describe("Fetch Jobs Route", () => {
+  test("GET /api/jobs/fetch-jobs", async () => {
+    const response = await request(app).get("/api/jobs/fetch-jobs");
     expect(response.status).toBe(200);
 
     expect(response.body).toEqual([
