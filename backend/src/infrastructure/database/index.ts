@@ -3,6 +3,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 let pool: mysql.Pool | null = null;
+export const disconnectDatabase = async () => {
+  if (pool) {
+    await pool.end(); // Replace 'pool' with your database pool instance
+  }
+};
 
 export const connectDatabase = async (): Promise<mysql.Pool> => {
   if (pool) {

@@ -16,5 +16,4 @@ module.exports = {
   transform: {
     "^.+\\.(t|j)sx?$": ["ts-jest", { isolatedModules: true }],
   },
-  testTimeout: 10000, // Increase timeout to avoid timeouts during async setup
 };
