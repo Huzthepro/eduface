@@ -1,4 +1,4 @@
-export class JobApplication {
+export class Job {
   id: string;
   title: string;
   company: string;

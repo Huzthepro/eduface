@@ -1,3 +1,3 @@
 export interface ExternalApiService {
-  fetchJobApplications(): Promise<any[]>;
+  fetchJobs(): Promise<any[]>;
 }

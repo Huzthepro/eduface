@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const jobApplicationSchema = z.object({
+export const jobSchema = z.object({
   id: z.string().min(1, "ID is required"),
   title: z
     .string()

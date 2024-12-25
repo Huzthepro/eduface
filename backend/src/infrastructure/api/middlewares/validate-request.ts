@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
-import { jobApplicationSchema } from "infrastructure/validation/jobApplicationSchema";
+import { jobSchema } from "@/infrastructure/validation/jobSchema";
 
-export const validateJobApplication = (
+export const validateJobCalls = (
   req: Request,
   res: Response,
   next: NextFunction
 ): void => {
   try {
-    jobApplicationSchema.parse(req.body);
+    jobSchema.parse(req.body);
     next(); // Continue to the controller if validation succeeds
   } catch (error) {
     if (error instanceof ZodError) {
