@@ -1,6 +1,6 @@
 export let testDb: any;
 import { connectDatabase } from "../src/infrastructure/database";
-
+import { beforeAll, afterAll } from "@jest/globals";
 let dbConnection: any;
 
 beforeAll(async () => {
