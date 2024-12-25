@@ -5,6 +5,5 @@ export default async () => {
   if (global.__SERVER__) {
     global.__SERVER__.close(); // Stop server
   }
-
-  await disconnectDatabase(); // Close DB connection pool
+  await disconnectDatabase(); // Disconnect database
 };
