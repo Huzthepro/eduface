@@ -10,7 +10,7 @@ module.exports = {
   },
 
   // globalSetup: "<rootDir>/test/global-setup.ts", // Add global setup
-  // setupFilesAfterEnv: ["<rootDir>/test/setup.ts"], // Register the setup file
+  setupFilesAfterEnv: ["<rootDir>/test/setup.ts"], // Register the setup file
   // globalTeardown: "<rootDir>/test/global-teardown.ts", // Global teardown
 
   transform: {

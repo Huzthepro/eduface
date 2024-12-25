@@ -5,7 +5,9 @@ dotenv.config();
 let pool: mysql.Pool | null = null;
 export const disconnectDatabase = async () => {
   if (pool) {
-    await pool.end(); // Replace 'pool' with your database pool instance
+    await pool.end();
+    pool = null;
+    console.log("🔌 Database disconnected successfully!");
   }
 };
 
