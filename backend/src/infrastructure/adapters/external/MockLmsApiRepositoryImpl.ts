@@ -3,7 +3,7 @@ import { Job } from "@/core/entities/job";
 import fs from "fs/promises";
 import path from "path";
 
-export class MockLmsApiAdapter implements ExternalApiService {
+export class MockLmsApiRepositoryImpl implements ExternalApiService {
   private filePath: string;
 
   constructor() {

@@ -7,24 +7,10 @@ import { GetSavedJobsUseCase } from "@/core/use-cases/job/GetSavedJobsUseCase";
 
 export class JobController {
   constructor(
-    private fetchJobsUseCase: FetchJobsUseCase,
     private saveJobUseCase: SaveJobUseCase,
     private getJobUseCase: GetJobUseCase,
     private getSavedJobsUseCase: GetSavedJobsUseCase
   ) {}
-
-  async fetchJobs(req: Request, res: Response): Promise<void> {
-    try {
-      const jobs = await this.fetchJobsUseCase.execute();
-      res.status(200).json(jobs);
-    } catch (error) {
-      res.status(500).json({
-        message: "Cannot get Job applications, please try again later.",
-        error: (error as Error).message,
-      });
-      console.error((error as Error).message);
-    }
-  }
 
   async saveJob(req: Request, res: Response): Promise<void> {
     try {
@@ -60,6 +46,23 @@ export class JobController {
       res.status(500).json({
         message:
           "Cannot retrieve saved job applications, please try again later.",
+        error: (error as Error).message,
+      });
+      console.error((error as Error).message);
+    }
+  }
+}
+
+export class ExternalJobController {
+  constructor(private fetchJobsUseCase: FetchJobsUseCase) {}
+
+  async fetchJobs(req: Request, res: Response): Promise<void> {
+    try {
+      const jobs = await this.fetchJobsUseCase.execute();
+      res.status(200).json(jobs);
+    } catch (error) {
+      res.status(500).json({
+        message: "Cannot get Job applications, please try again later.",
         error: (error as Error).message,
       });
       console.error((error as Error).message);

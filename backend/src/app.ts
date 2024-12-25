@@ -6,7 +6,10 @@ import {
   errorHandler,
   notFoundHandler,
 } from "infrastructure/api/middlewares/error-handler";
-import { initializeAdapters } from "infrastructure/adapters";
+import {
+  initializeAdapters,
+  initializeNonDBAdapters,
+} from "infrastructure/adapters";
 import { validateEnv } from "infrastructure/validation/envValidation";
 
 const app = express();
@@ -15,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 // Validate environment variables
 validateEnv(); // Call validation before connecting to the database
-
+initializeNonDBAdapters();
 // Initialize database and adapters
 (async () => {
   try {
@@ -30,6 +33,7 @@ validateEnv(); // Call validation before connecting to the database
   }
 })();
 // Configure routes
+
 configureRoutes(app);
 app.use(notFoundHandler);
 app.use(errorHandler);
