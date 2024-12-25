@@ -15,9 +15,7 @@ const waitForDatabaseConnection = async () => {
   while (!connected && attempts < 5) {
     try {
       // Make API call to fetch applications endpoint
-      const response = await request(app).get(
-        "/api/applications/fetch-applications"
-      );
+      const response = await request(app).get("/api/health-check");
       if (response.status === 200) {
         // If the endpoint responds with 200, DB is ready
         connected = true;
