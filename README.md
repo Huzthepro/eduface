@@ -1,45 +1,33 @@
-# Eduface
+# 🚀 Eduface
 
-Eduface is a full-stack application built with a solid backend architecture and a Vue.js frontend. It supports Docker configurations for easier deployment and development.
+Eduface is a full-stack application built with a solid backend architecture and a Vue.js frontend. It supports Docker configurations for easier deployment and development. 🌟
 
 ---
 
-## Setup Options
+## ⚙️ Setup Options
 
 Choose one of the following setup methods:
 
-1. [Docker Compose Setup (Recommended)](#docker-compose-setup)
-2. [Standard Setup (Manual Installation)](#standard-setup)
+1. [🐳 Docker Compose Setup (Recommended)](#docker-compose-setup)
+2. [🛠️ Standard Setup (Manual Installation)](#standard-setup)
 
 ---
 
-## Docker Compose Setup (Recommended)
+## 🐳 Docker Compose Setup (Recommended)
 
-### Clone or Download the Project
-
-Clone the repository using the following command:
-
-```bash
-git clone https://github.com/Huzthepro/eduface.git
-```
-
-Or download the ZIP file from the GitHub repository and extract it to your desired location.
-
----
-
-For Docker Compose setup simply run:
+For Docker Compose setup, follow the instructions in the project's existing documentation. Simply run:
 
 ```bash
 docker-compose up --build
 ```
 
-> **Note:** A `docker-compose.override.yml` file is included for making changes directly to the running containers without rebuilding the images.
+> ⚠️ **Note:** A `docker-compose.override.yml` file is included for making changes directly to the running containers without rebuilding the images.
 
 ---
 
-## Standard Setup (Manual Installation)
+## 🛠️ Standard Setup (Manual Installation)
 
-### Clone or Download the Project
+### 📥 Clone or Download the Project
 
 Clone the repository using the following command:
 
@@ -51,28 +39,30 @@ Or download the ZIP file from the GitHub repository and extract it to your desir
 
 ---
 
-### Install Dependencies
+### 📦 Install Dependencies
 Navigate to the project directory and install all dependencies:
 
 ```bash
 npm run install-all
 ```
 
-### Run the Application
+### ▶️ Run the Application
 
 ```bash
 npm run dev
 ```
 
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:3000`
+- 🌐 Frontend: `http://localhost:5173`
+- ⚙️ Backend: `http://localhost:3000`
 
 ---
 
-## Environment Configuration
+## 🔧 Environment Configuration
+
 For manual setup, create the .env files in the root of both frontend and backend:
 
 ### Backend `.env`
+
 
 ```env
 DB_HOST=127.0.0.1
@@ -90,7 +80,7 @@ VITE_BACKEND_URL=http://localhost:3000
 
 ---
 
-## Database Setup
+## 🗄️ Database Setup
 
 For manual setup, create the database and table:
 
@@ -110,16 +100,16 @@ Ensure your `.env` file settings match your database configuration.
 
 ---
 
-## API Endpoints
+## 🌐 API Endpoints
 
-### 1. Fetch Mock Applications
+### 1. 📄 Fetch Mock Applications
 **GET**: `http://localhost:3000/api/jobs/fetch-jobs`
 
 Returns mock job application data.
 
 ---
 
-### 2. Save an Application
+### 2. 💾 Save an Application
 **POST**: `http://localhost:3000/api/jobs/save-job`
 
 **Payload:**
@@ -135,14 +125,14 @@ Returns mock job application data.
 
 ---
 
-### 3. Get All Applications
+### 3. 📋 Get All Applications
 **GET**: `http://localhost:3000/api/jobs/my-jobs`
 
 Retrieves all job applications stored in the database.
 
 ---
 
-### 4. Health Check
+### 4. 🩺 Health Check
 **GET**: `http://localhost:3000/api/health-check`
 
 Tests database connectivity.
