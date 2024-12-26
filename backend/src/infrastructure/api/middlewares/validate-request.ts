@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
-import { jobSchema } from "@/infrastructure/validation/jobSchema";
+import { jobSchema } from "infrastructure/validation/jobSchema";
 
 export const validateJobCalls = (
   req: Request,
