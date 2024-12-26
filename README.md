@@ -1,7 +1,7 @@
 
 # Eduface
 
-Eduface is a full-stack application designed to streamline job application management. This repository contains both the front-end and back-end components of the project.
+Eduface is full-stack application for mainly builded for designing a working solid backend with clean code. It has Vue in front-end. And have docker configurations.
 
 ---
 
@@ -50,8 +50,15 @@ Ensure you have a `.env` file in the `backend` root folder with the following co
 DB_HOST=127.0.0.1
 DB_USER=root
 DB_PASSWORD=yourPassword
-DB_NAME=job_applications
+DB_NAME=edu_local_db
 PORT=3000
+```
+
+---
+++ And another `.env` file in the `frontend` root folder with the following content:
+
+```env
+VITE_BACKEND_URL=http://localhost:3000
 ```
 
 ---
@@ -61,9 +68,8 @@ PORT=3000
 Set up the database by creating a table using the following SQL schema:
 
 ```sql
-CREATE DATABASE IF NOT EXISTS job_applications;
-
-USE job_applications;
+CREATE DATABASE IF NOT EXISTS edu_local_db;
+USE edu_local_db;
 
 CREATE TABLE IF NOT EXISTS job_applications (
   id INT PRIMARY KEY,
@@ -71,6 +77,7 @@ CREATE TABLE IF NOT EXISTS job_applications (
   company VARCHAR(50) NOT NULL,
   location VARCHAR(50) NOT NULL
 );
+
 ```
 
 Make sure your database connection information in the `.env` file matches your local or remote database setup.
@@ -80,14 +87,14 @@ Make sure your database connection information in the `.env` file matches your l
 ## API Endpoints
 
 ### 1. Fetch Mock Applications
-**GET**: `http://localhost:3000/api/applications/fetch-applications`
+**GET**: `http://localhost:3000/api/jobs/fetch-jobs`
 
 This endpoint returns mock job application data.
 
 ---
 
 ### 2. Save an Application to the Database
-**POST**: `http://localhost:3000/api/applications/save-application`
+**POST**: `http://localhost:3000/api/jobs/save-job`
 
 **Payload:**
 
@@ -103,8 +110,16 @@ This endpoint returns mock job application data.
 ---
 
 ### 3. Get All Applications in the Database
-**GET**: `http://localhost:3000/api/applications/my-applications`
+**GET**: `http://localhost:3000/api/jobs/my-jobs`
 
 This endpoint retrieves all job applications stored in the database.
+
+---
+
+
+### 4. Health Check
+**GET**: `http://localhost:3000/api/health-check`
+
+Just to test databse connection.
 
 ---
