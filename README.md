@@ -2,6 +2,13 @@
 
 Eduface is a full-stack application built with a solid backend architecture and a Vue.js frontend. It supports Docker configurations for easier deployment and development. 🌟
 
+<p align="center">
+   <img alt="How To Use" src="/frontend-design.png"  width="40%">
+  <img alt="How To Use" src="/backend-structure.png" width="40%">
+  
+  
+</p>
+
 ---
 <br/>
 <br/>
