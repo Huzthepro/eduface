@@ -17,7 +17,7 @@ export default defineComponent({
 
     onMounted(async () => {
       try {
-        const data = await Fetcher.get('applications/fetch-applications')
+        const data = await Fetcher.get('jobs/fetch-jobs')
         cards.value = data
       } catch (err: unknown) {
         error.value = 'Failed to get job listings. Please try again later.'
