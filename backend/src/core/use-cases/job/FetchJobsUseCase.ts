@@ -1,4 +1,4 @@
-import { ExternalApiService } from "core/ports/ExternalApiService";
+import { ExternalApiService } from "@/core/ports/externalApiService";
 
 export class FetchJobsUseCase {
   constructor(private externalApiService: ExternalApiService) {}

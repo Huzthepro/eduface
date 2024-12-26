@@ -1,5 +1,5 @@
 import express from "express";
-import { ExternalJobControllerInstance } from "@/infrastructure/adapters/external/externalJobAdapter.di";
+import { ExternalJobControllerInstance } from "infrastructure/adapters/external/externalJobAdapter.di";
 import { jobControllerInstance } from "infrastructure/adapters/job/jobAdapter.di";
 import { validateJobCalls } from "infrastructure/api/middlewares/validate-request";
 

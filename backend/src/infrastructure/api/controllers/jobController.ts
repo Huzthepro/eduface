@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import { FetchJobsUseCase } from "@/core/use-cases/job/FetchJobsUseCase";
-import { SaveJobUseCase } from "@/core/use-cases/job/SaveJobUseCase";
-import { GetJobUseCase } from "@/core/use-cases/job/GetJobUseCase";
-import { GetSavedJobsUseCase } from "@/core/use-cases/job/GetSavedJobsUseCase";
+import { FetchJobsUseCase } from "core/use-cases/job/fetchJobsUseCase";
+import { SaveJobUseCase } from "core/use-cases/job/saveJobUseCase";
+import { GetJobUseCase } from "core/use-cases/job/getJobUseCase";
+import { GetSavedJobsUseCase } from "core/use-cases/job/getSavedJobsUseCase";
 
 export class JobController {
   constructor(

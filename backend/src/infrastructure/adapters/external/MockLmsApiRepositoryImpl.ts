@@ -1,5 +1,5 @@
-import { ExternalApiService } from "core/ports/ExternalApiService";
-import { Job } from "@/core/entities/job";
+import { ExternalApiService } from "core/ports/externalApiService";
+import { Job } from "core/entities/job";
 import fs from "fs/promises";
 import path from "path";
 

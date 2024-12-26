@@ -1,5 +1,5 @@
-import { Job } from "@/core/entities/job";
-import { JobRepository } from "@/core/ports/JobRepository";
+import { Job } from "core/entities/job";
+import { JobRepository } from "core/ports/jobRepository";
 import { Pool } from "mysql2/promise";
 
 export class JobRepositoryImpl implements JobRepository {

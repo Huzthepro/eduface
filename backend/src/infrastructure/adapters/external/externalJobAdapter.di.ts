@@ -1,7 +1,7 @@
-import { ExternalJobController } from "infrastructure/api/controllers/JobController";
-import { MockLmsApiRepositoryImpl } from "@/infrastructure/adapters/external/MockLmsApiRepositoryImpl";
+import { ExternalJobController } from "infrastructure/api/controllers/jobController";
+import { MockLmsApiRepositoryImpl } from "infrastructure/adapters/external/mockLmsApiRepositoryImpl";
 
-import { FetchJobsUseCase } from "@/core/use-cases/job/FetchJobsUseCase";
+import { FetchJobsUseCase } from "core/use-cases/job/fetchJobsUseCase";
 
 let ExternalJobControllerInstance: ExternalJobController;
 

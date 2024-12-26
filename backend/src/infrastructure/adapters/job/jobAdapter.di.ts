@@ -1,9 +1,9 @@
-import { JobController } from "infrastructure/api/controllers/JobController";
-import { JobRepositoryImpl } from "infrastructure/adapters/job/JobRepositoryImpl";
+import { JobController } from "infrastructure/api/controllers/jobController";
+import { JobRepositoryImpl } from "infrastructure/adapters/job/jobRepositoryImpl";
 
-import { SaveJobUseCase } from "@/core/use-cases/job/SaveJobUseCase";
-import { GetJobUseCase } from "@/core/use-cases/job/GetJobUseCase";
-import { GetSavedJobsUseCase } from "@/core/use-cases/job/GetSavedJobsUseCase";
+import { SaveJobUseCase } from "core/use-cases/job/saveJobUseCase";
+import { GetJobUseCase } from "core/use-cases/job/getJobUseCase";
+import { GetSavedJobsUseCase } from "core/use-cases/job/getSavedJobsUseCase";
 
 let jobControllerInstance: JobController;
 
